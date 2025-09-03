@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checklist Grátis + Escolha seu próximo passo</title>
+  <meta name="description" content="Cadastre-se e receba o Checklist Primeira Venda em 72h. Depois, escolha se quer ir para a Página de Vendas ou falar no WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #13131a;
+      --text: #e8e8ef;
+      --muted: #b9b9c6;
+      --primary: #3df18b;
+      --primary-dark: #1bc768;
+      --accent: #25d366;
+      --border: #242432;
+      --shadow: 0 20px 40px rgba(0,0,0,.3);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    h1,h2,h3 { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 20px; border-radius: 999px; font-weight: 700;
+      border: none; cursor: pointer; background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+      color: #07140e; transition: transform .08s ease, filter .2s ease;
+      margin-top: 10px;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .hero { padding: 80px 0; text-align: center; }
+    .hero h1 { font-size: clamp(26px, 4vw, 48px); margin-bottom: 16px; }
+    .hero p { color: var(--muted); font-size: 18px; margin-bottom: 30px; }
+    .form-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      max-width: 500px; margin: 0 auto; padding: 30px;
+    }
+    .form-card label { display: block; text-align: left; margin-bottom: 6px; font-weight: 600; }
+    .form-card input {
+      width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border);
+      background: #0b0b0f; color: var(--text); margin-bottom: 16px; font-size: 16px;
+    }
+    .next-step { display: none; margin-top: 20px; }
+    .benefits { margin-top: 50px; display: grid; gap: 20px; }
+    .benefit { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: left; }
+    .benefit h3 { margin-bottom: 6px; }
+    .benefit p { color: var(--muted); font-size: 15px; }
+    footer { text-align: center; padding: 40px 0; color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>🎁 Receba grátis o Checklist <br> "Primeira Venda em 72h"</h1>
+        <p>Depois de cadastrar seu e-mail, escolha se quer acessar a página de vendas ou falar comigo no WhatsApp 📲</p>
+        <div class="form-card">
+          <form id="leadForm" action="https://formsubmit.co/Marcelloxavier517@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Novo Lead - Primeira Venda">
+            <input type="hidden" name="_captcha" value="false">
+            <label for="nome">Seu nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            <label for="email">Seu melhor e-mail</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+            <button type="submit" class="btn">Quero meu checklist</button>
+          </form>
+          <div class="next-step" id="nextStep">
+            <p>✅ Cadastro feito! Agora escolha seu próximo passo:</p>
+            <a href="https://kiwify.app/sgApSEU?afid=uRLB8JhA" class="btn">👉 Ir para Página de Vendas</a>
+            <a href="https://wa.me/554791585519?text=Olá,+quero+saber+mais+sobre+a+Primeira+Venda!" class="btn">📲 Falar no WhatsApp</a>
+          </div>
+        </div>
+        <div class="benefits container">
+          <div class="benefit">
+            <h3>✅ Passo a passo simples</h3>
+            <p>Em até 72h, você terá clareza sobre o que fazer para realizar sua primeira venda online.</p>
+          </div>
+          <div class="benefit">
+            <h3>🚀 Flexibilidade</h3>
+            <p>Você decide se prefere ver a página de vendas ou já começar a conversar comigo no WhatsApp.</p>
+          </div>
+          <div class="benefit">
+            <h3>💡 Conteúdo exclusivo</h3>
+            <p>Além do checklist, receba dicas práticas que aceleram seus resultados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    © <span id="year"></span> zMD - Do Zero à Sua Primeira Venda. Todos os direitos reservados.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('leadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      fetch(this.action, { method: 'POST', body: formData })
+        .then(() => {
+          this.style.display = 'none';
+          document.getElementById('nextStep').style.display = 'block';
+        })
+        .catch(() => alert('Erro ao enviar. Tente novamente.'));
+    });
+  </script>
+</body>
+</html>
